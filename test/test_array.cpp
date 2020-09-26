@@ -57,7 +57,7 @@ namespace
       CHECK_EQUAL(data.max_size(), SIZE);
     }
 
-#ifndef ETL_COMPILER_MICROSOFT // Temporarily disabled as Appveyor reports an "internal compiler error
+//#ifndef ETL_COMPILER_MICROSOFT // Temporarily disabled as Appveyor reports an "internal compiler error
     //*************************************************************************
     TEST(test_cpp17_deduced_constructor)
     {
@@ -67,7 +67,7 @@ namespace
       bool isEqual = std::equal(data.begin(), data.end(), compare.begin());
       CHECK(isEqual);
     }
-#endif
+//#endif
 
     //*************************************************************************
     TEST(test_assignment)

@@ -92,6 +92,20 @@ namespace
       CHECK_EQUAL(data.max_size(), SIZE);
     }
 
+#if ETL_USING_STL
+    //*************************************************************************
+    TEST(test_cpp17_deduced_constructor)
+    {
+      etl::vector data{ NDC("0"), NDC("1"), NDC("2"), NDC("3"), NDC("4"), NDC("5"), NDC("6"), NDC("7"), NDC("8"), NDC("9") };
+
+      CHECK(!data.empty());
+      CHECK(data.full());
+      CHECK(data.begin() != data.end());
+      CHECK_EQUAL(10U, data.size());
+      CHECK_EQUAL(SIZE, data.max_size());
+    }
+#endif
+
     //*************************************************************************
     TEST_FIXTURE(SetupFixture, test_destruct_via_ivector)
     {

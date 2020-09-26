@@ -101,6 +101,20 @@ namespace
       CHECK_EQUAL(SIZE, data.max_size());
     }
 
+#if ETL_USING_STL
+    //*************************************************************************
+    TEST(test_cpp17_deduced_constructor)
+    {
+      etl::deque data{ N0, N1, N2, N3, N4, N5, N6, N7, N8, N9, N10, N11, N12, N13 };
+
+      CHECK(!data.empty());
+      CHECK(data.full());
+      CHECK(data.begin() != data.end());
+      CHECK_EQUAL(14U, data.size());
+      CHECK_EQUAL(SIZE, data.max_size());
+    }
+#endif
+
     //*************************************************************************
     TEST(test_constructor_fill)
     {

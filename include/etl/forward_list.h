@@ -1736,6 +1736,15 @@ namespace etl
   };
 
   //*************************************************************************
+  /// Template deduction guides.
+  //*************************************************************************
+#if ETL_CPP17_SUPPORTED && ETL_NOT_USING_STLPORT && ETL_USING_STL
+  template <typename T, typename... Ts>
+  forward_list(T, Ts...)
+    ->forward_list<etl::enable_if_t<(etl::is_same_v<T, Ts> && ...), T>, 1 + sizeof...(Ts)>;
+#endif
+
+  //*************************************************************************
   /// A templated forward_list implementation that uses a fixed size pool.
   ///\note 'merge' and 'splice_after' and are not supported.
   //*************************************************************************

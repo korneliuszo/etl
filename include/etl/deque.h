@@ -2457,6 +2457,15 @@ namespace etl
     typename etl::aligned_storage<sizeof(T), etl::alignment_of<T>::value>::type buffer[BUFFER_SIZE];
   };
 
+  //*************************************************************************
+  /// Template deduction guides.
+  //*************************************************************************
+#if ETL_CPP17_SUPPORTED && ETL_NOT_USING_STLPORT && ETL_USING_STL
+  template <typename T, typename... Ts>
+  deque(T, Ts...)
+    ->deque<etl::enable_if_t<(etl::is_same_v<T, Ts> && ...), T>, 1 + sizeof...(Ts)>;
+#endif  
+
   //***************************************************************************
   /// Equal operator.
   ///\param lhs  Reference to the _begin deque.

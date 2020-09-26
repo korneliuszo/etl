@@ -83,6 +83,20 @@ namespace
       CHECK(data.begin() == data.end());
     }
 
+#if ETL_USING_STL
+    //*************************************************************************
+    TEST(test_cpp17_deduced_constructor)
+    {
+      etl::vector data{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+      CHECK(!data.empty());
+      CHECK(data.full());
+      CHECK(data.begin() != data.end());
+      CHECK_EQUAL(10U, data.size());
+      CHECK_EQUAL(SIZE, data.max_size());
+    }
+#endif
+
     //*************************************************************************
     TEST(test_iterator_comparison_empty)
     {

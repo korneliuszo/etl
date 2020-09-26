@@ -2160,6 +2160,15 @@ namespace etl
   };
 
   //*************************************************************************
+  /// Template deduction guides.
+  //*************************************************************************
+#if ETL_CPP17_SUPPORTED && ETL_NOT_USING_STLPORT && ETL_USING_STL
+  template <typename T, typename... Ts>
+  list(T, Ts...)
+    ->list<etl::enable_if_t<(etl::is_same_v<T, Ts> && ...), T>, 1 + sizeof...(Ts)>;
+#endif 
+
+  //*************************************************************************
   /// A templated list implementation that uses a fixed size buffer.
   //*************************************************************************
   template <typename T>
