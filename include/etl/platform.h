@@ -31,19 +31,6 @@ SOFTWARE.
 #ifndef ETL_PLATFORM_INCLUDED
 #define ETL_PLATFORM_INCLUDED
 
-#include <stdint.h>
-#include <limits.h>
-
-// Define a debug macro
-#if (defined(_DEBUG) || defined(DEBUG)) && !defined(ETL_DEBUG) 
-  #define ETL_DEBUG
-#endif
-
-// Determine the bit width of the platform.
-#define ETL_PLATFORM_16BIT (UINT16_MAX == UINTPTR_MAX)
-#define ETL_PLATFORM_32BIT (UINT32_MAX == UINTPTR_MAX)
-#define ETL_PLATFORM_64BIT (UINT64_MAX == UINTPTR_MAX)
-
 // Include the user's profile definition.
 #if !defined(ETL_NO_PROFILE_HEADER) && defined(__has_include)
   #if !__has_include("etl_profile.h")
@@ -54,6 +41,7 @@ SOFTWARE.
 #if !defined(ETL_NO_PROFILE_HEADER)
   #include "etl_profile.h"
 #endif
+
 
 // Helper macro, so we don't have to use double negatives.
 // The ETL will use the STL, unless ETL_NO_STL is defined.
@@ -85,6 +73,22 @@ SOFTWARE.
 #endif
 
 #define ETL_8BIT_SUPPORT (CHAR_BIT == 8)
+
+#if ETL_USING_STL
+  #include <stdint.h>
+  #include <limits.h>
+#endif
+
+// Define a debug macro
+#if (defined(_DEBUG) || defined(DEBUG)) && !defined(ETL_DEBUG)
+  #define ETL_DEBUG
+#endif
+
+// Determine the bit width of the platform.
+#define ETL_PLATFORM_16BIT (UINT16_MAX == UINTPTR_MAX)
+#define ETL_PLATFORM_32BIT (UINT32_MAX == UINTPTR_MAX)
+#define ETL_PLATFORM_64BIT (UINT64_MAX == UINTPTR_MAX)
+
 
 // Helper macro for ETL_NO_64BIT_TYPES.
 #if defined(ETL_NO_64BIT_TYPES)

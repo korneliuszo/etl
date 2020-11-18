@@ -53,9 +53,6 @@ SOFTWARE.
 #ifndef ETL_TYPE_TRAITS_INCLUDED
 #define ETL_TYPE_TRAITS_INCLUDED
 
-#include <stddef.h>
-#include <stdint.h>
-
 #include "platform.h"
 #include "nullptr.h"
 #include "static_assert.h"
@@ -64,6 +61,11 @@ SOFTWARE.
 /// A set of type traits definitions.
 /// Derived from either the standard or alternate definitions, dependant on whether or not ETL_NO_STL is defined.
 /// \ingroup utilities
+
+#if ETL_USING_STL
+  #include <stddef.h>
+  #include <stdint.h>
+#endif
 
 #if ETL_USING_STL && ETL_CPP11_SUPPORTED
   #include <type_traits>

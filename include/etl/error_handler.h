@@ -36,7 +36,9 @@ SOFTWARE.
 /// Error handler for when throwing exceptions is not required.
 ///\ingroup utilities
 
-#include <assert.h>
+#if ETL_USING_STL
+  #include <assert.h>
+#endif
 
 #include "platform.h"
 #include "exception.h"

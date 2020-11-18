@@ -36,8 +36,6 @@ SOFTWARE.
 /// Additional new variants of certain algorithms.
 ///\ingroup utilities
 
-#include <stdint.h>
-#include <string.h>
 
 #include "platform.h"
 #include "type_traits.h"
@@ -47,6 +45,8 @@ SOFTWARE.
 #include "utility.h"
 
 #if ETL_USING_STL
+  #include <stdint.h>
+  #include <string.h>
   #include <algorithm>
   #include <utility>
   #include <iterator>

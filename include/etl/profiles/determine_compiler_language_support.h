@@ -31,8 +31,6 @@ SOFTWARE.
 #ifndef ETL_DETERMINE_COMPILER_LANGUAGE_SUPPORT_H_INCLUDED
 #define ETL_DETERMINE_COMPILER_LANGUAGE_SUPPORT_H_INCLUDED
 
-#include <math.h>
-
 #include "determine_compiler.h"
 
 #if !defined(ETL_CPP11_SUPPORTED) && !defined(ETL_CPP14_SUPPORTED) && !defined(ETL_CPP17_SUPPORTED)

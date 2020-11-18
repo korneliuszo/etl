@@ -36,7 +36,9 @@ SOFTWARE.
 #if defined(ARDUINO)
   #include <stddef.h>
 #else
-  #include <cstddef>
+  #if ETL_USING_STL
+    #include <cstddef>
+  #endif
 #endif
 
 #if (ETL_CPP11_SUPPORTED == 0) || ETL_NOT_USING_STL
